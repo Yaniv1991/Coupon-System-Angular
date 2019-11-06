@@ -1,0 +1,6 @@
+
+<div *ngIf="menuItems">
+  <div *ngFor="let entry of menuItems">
+    <button a routerLink="{{entry.routePath}}" class="menubutton">{{entry.description}}</button>
+  </div>
+</div>

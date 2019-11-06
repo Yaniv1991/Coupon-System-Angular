@@ -1,0 +1,12 @@
+[
+  {"id":12345, "firstName":"Alfred", "lastName":"Hitchcok", "email":"alfred@hitchcock.com", "password":"a121h"},
+  {"id":23456, "firstName":"Betty", "lastName":"White", "email":"betty@white.com", "password":"b121h"},
+  {"id":34567, "firstName":"Carl", "lastName":"Malone", "email":"carl@malone.com", "password":"c121h"},
+  {"id":45678, "firstName":"Donald", "lastName":"Trump", "email":"donny@trump.com", "password":"d121h"},
+  {"id":56789, "firstName":"Ernest", "lastName":"Hamingway", "email":"ernest@hamingway.com", "password":"e121h"},
+  {"id":67890, "firstName":"Florence", "lastName":"Nightingale", "email":"florence@night.com", "password":"f121h"},
+  {"id":10111, "firstName":"Gerrard", "lastName":"Buttler", "email":"gerrard@butt.com", "password":"g121h"},
+  {"id":21314, "firstName":"Harold", "lastName":"Cooper", "email":"harold@coop.com", "password":"h121h"},
+  {"id":15161, "firstName":"Isaac", "lastName":"Newton", "email":"isaac@gravity.com", "password":"i121h"},
+  {"id":71819, "firstName":"Jason", "lastName":"Voorhees", "email":"jason@friday13.com", "password":"j121h"}
+]

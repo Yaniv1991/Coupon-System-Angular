@@ -1,0 +1,35 @@
+<img *ngIf="!coupon" src = "assets/images/Loading_Infinity.gif">
+<div *ngIf="coupon" class="coupon">
+  <div class="container">
+    <h3>{{coupon.title}}</h3>
+    <h4>{{coupon.category}}</h4>
+  </div>
+  <img [src]="coupon.image" class="image">
+  <div class="container" style="background-color:white">
+    <h2><b>{{coupon.price}} ILS</b></h2>
+    <p>{{coupon.message}}</p>
+  </div>
+  <div class="container">
+    <p>Only&nbsp;<span class="promo">{{coupon.amount}}</span>&nbsp;left in stock</p>
+    <p class="expire">Expires: {{coupon.endDate}}</p>
+  </div>
+  <div *ngIf="isCustomer" class="container">
+    <div class="purchase">
+      <button class="buttonpurchase" (click)="purchaseCoupon()">Purchase</button>
+    </div>
+  </div>
+  <div *ngIf="!isCustomer" class="othercontainer">
+    <table>
+      <tr>
+        <td class="update">
+          <button class="buttonupdate" a routerLink="{{url}}">Update</button>
+          <!-- <a routerLink="/addOrUpdate/update/coupon/{{coupon.id}}" class="update"><img src="../assets/images/UpdateButton.png" alt="Update"></a> -->
+        </td>
+        <td class="delete">
+          <button class="buttondelete" (click)="deleteCoupon()">Delete</button>
+          <!-- <a (click)="deleteCoupon()" class="delete"><img src="../assets/images/deleteButton.png" alt="Delete"></a> -->
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

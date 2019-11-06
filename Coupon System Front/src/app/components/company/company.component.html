@@ -1,0 +1,27 @@
+<div>
+    <table>
+      <tr>
+        <td class="title">Company id</td>
+        <td class="details">{{company.id}}</td>
+      </tr>
+      <tr>
+        <td class="title">Company Name</td>
+        <td class="details">{{company.name}}</td>
+      </tr>
+      <tr>
+        <td class="title">Email</td>
+        <td class="details">{{company.email}}</td>
+      </tr>
+      <tr>
+        <td class="title">Password</td>
+        <td class="details">{{company.password}}</td>
+      </tr>
+      <tr>
+          <td><button class="buttonupdate" a routerLink='{{url}}'>Update</button></td>
+          <!-- TODO: Need to decide how "Delte" button should work.
+                       For now did it with a "deleteCustomer" method in ts file. -->
+          <td><button class="buttondelete" (click)="deleteCompany()">Delete</button></td>
+        </tr>
+    </table>
+  </div>
+

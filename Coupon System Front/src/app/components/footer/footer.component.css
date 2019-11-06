@@ -1,0 +1,12 @@
+div{
+  height: 100%;
+}
+
+p{
+  margin: 0;
+  color: darkblue;
+  /* vertical center allign*/
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%)
+}

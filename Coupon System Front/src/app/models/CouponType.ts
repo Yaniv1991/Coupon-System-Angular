@@ -1,0 +1,17 @@
+
+export enum CouponType {
+
+  AUTOMOBILE,
+  CAMPING,
+  COMPUTER,
+  ELECTRICITY,
+  FASHION,
+  FOOD,
+  HEALTH,
+  MUSIC,
+  RESTURANT,
+  SPA,
+  SPORTS,
+  TRAVELING
+}
+

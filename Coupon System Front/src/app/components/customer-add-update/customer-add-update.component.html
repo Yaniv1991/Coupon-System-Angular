@@ -1,0 +1,23 @@
+<!-- <p>customer-add-update works!</p> -->
+<div *ngIf="add" class="addForm">
+  <div class="form">
+      <form>
+          <label for="firstname" class="formlabel">First Name</label><input class="forminput" type="text" [(ngModel)]="customer.firstName" >
+          <label for="lastname" class="formlabel">Last Name</label><input class="forminput" type="text" [(ngModel)]="customer.lastName">
+          <label for="email" class="formlabel">Email</label><input class="forminput" type="email" [(ngModel)]="customer.email">
+          <label for="password" class="formlabel">Password</label><input class="forminput" type="password" [(ngModel)]="customer.password">
+          <button type="submit" class="submitbutton" (click)="submitChanges()">Submit</button>
+        </form>
+    </div>
+</div>
+<div *ngIf="!add" class="updateForm">
+  <div class="form">
+    <form>
+      <label for="firstname" class="formlabel">First Name</label><input class="forminput" type="text" [(ngModel)]="customer.firstName" >
+      <label for="lastname" class="formlabel">Last Name</label><input class="forminput" type="text" [(ngModel)]="customer.lastName">
+      <label for="email" class="formlabel">Email</label><input class="forminput" type="email" [(ngModel)]="customer.email">
+      <label for="password" class="formlabel">Password</label><input class="forminput" type="password" [(ngModel)]="customer.password">
+      <button type="submit" class="submitbutton" (click)="submitChanges()">Submit</button>
+    </form>
+  </div>
+</div>

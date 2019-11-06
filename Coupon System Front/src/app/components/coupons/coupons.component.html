@@ -1,0 +1,76 @@
+<img *ngIf="!coupons" src = "assets/images/Loading_Infinity.gif">
+
+<div *ngIf="coupons" class="wrapper">
+  <div class="headcomp" *ngIf="!isCustomer">
+  <table class="comptable">
+    <tr>
+      <td>
+        <button class="buttonadd" a routerLink="/couponAddOrUpdate/0">Add New</button>
+      </td>
+      <td>
+        <form>
+          <label for="couponType" class="formLabel">Category</label>
+          <select [(ngModel)]="type" class="forminput" name="couponType">
+            <option value="All">All</option>
+            <option value="AUTOMOBILE">Automobile</option>
+            <option value="CAMPING">Camping</option>
+            <option value="COMPUTER">Computer</option>
+            <option value="ELECTRICITY">Electricity</option>
+            <option value="FASHION">Fashion</option>
+            <option value="FOOD">Food</option>
+            <option value="HEALTH">Health</option>
+            <option value="MUSIC">Music</option>
+            <option value="RESTURANT">Resturant</option>
+            <option value="SPA">Spa</option>
+            <option value="SPORT">Sport</option>
+            <option value="TRAVELING">Traveling</option>
+          </select>
+        </form>
+      </td>
+      <td>
+        <button class="searchbutton" (click)="searchByType()">Search</button>
+      </td>
+    </tr>
+  </table>
+  </div>
+  <div class="headcust" *ngIf="isCustomer">
+    <table class="custtable">
+      <tr>
+        <td>
+          <form>
+            <label for="couponType" class="formLabel">Category</label>
+            <select [(ngModel)]="type" class="forminput" name="couponType">
+                <option value="All">All</option>
+              <option value="AUTOMOBILE">Automobile</option>
+              <option value="CAMPING">Camping</option>
+              <option value="COMPUTER">Computer</option>
+              <option value="ELECTRICITY">Electricity</option>
+              <option value="FASHION">Fashion</option>
+              <option value="FOOD">Food</option>
+              <option value="HEALTH">Health</option>
+              <option value="MUSIC">Music</option>
+              <option value="RESTURANT">Resturant</option>
+              <option value="SPA">Spa</option>
+              <option value="SPORT">Sport</option>
+              <option value="TRAVELING">Traveling</option>
+            </select>
+          </form>
+        </td>
+        <td>
+          <button class="searchbutton" (click)="searchByType()">Search</button>
+        </td>
+        <td>
+          <form>
+            <label for="price" class="formLabel">Price</label><input type="number" class="forminput" [(ngModel)]="price">
+          </form>
+        </td>
+        <td>
+          <button class="searchbutton" (click)="searchByPrice()">Search</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="coupon" *ngFor="let coupon of coupons">
+    <app-coupon [coupon]="coupon" [isCustomer]="isCustomer"></app-coupon>
+  </div>
+</div>

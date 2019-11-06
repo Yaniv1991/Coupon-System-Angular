@@ -1,0 +1,9 @@
+<div class="wrapper">
+  <!-- <a routerLink="companyAddOrUpdate/add/0" ><img src="..\assets\images\AddButton.png" alt="Add New company"></a> -->
+  <div class="headdiv">
+    <button class="buttonadd" a routerLink='../companyAddOrUpdate/0'>Add New</button>
+  </div>
+  <div class="company" *ngFor="let company of companies">
+    <app-company [company]="company"></app-company>
+  </div>
+</div>

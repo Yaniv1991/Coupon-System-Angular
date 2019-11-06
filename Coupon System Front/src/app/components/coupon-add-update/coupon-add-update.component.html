@@ -1,0 +1,39 @@
+<!-- <p>coupon-add-update works!</p> -->
+<div *ngIf="add" class="wrapper">
+    <div class="form">
+        <form>
+            <label  class="formlabel" for="title">Title</label><input class="forminput" type="text" [(ngModel)]="coupon.title" >
+            <label  class="formlabel" for="message">Message</label><input class="forminput" type="text" [(ngModel)]="coupon.message" >
+            <label  class="formlabel" for="amount">Stock</label><input class="forminput" type="number" [(ngModel)]="coupon.amount" >
+            <label  class="formlabel" for="price">Price</label><input class="forminput" type="number" [(ngModel)]="coupon.price" >
+            <label  class="formlabel" for="startdate">Start Date</label><input class="forminput" type="date" [(ngModel)]="coupon.startDate" >
+            <label  class="formlabel" for="enddate">End Date</label><input class="forminput" type="text" [(ngModel)]="coupon.endDate" >
+            <label  class="formlabel" for="coupontype">Type</label>
+            <select class="forminput">
+              <!-- TODO (any) fix couponType so it shows all of the types in the list-->
+              <option *ngFor="let ct of couponTypes" value="{{ct.valueOf()}}">{{ct.valueOf()}}</option>
+            </select>
+            <label  class="formlabel" for="image">Upload Image</label><input class="forminput" type="file">
+            <button type="submit" class="submitbutton" (click)="submitChanges()">Submit</button>
+        </form>
+      </div>
+</div>
+<div *ngIf="!add" class="wrapper">
+    <div class="form">
+        <form>
+            <label  class="formlabel" for="title">Title</label><input class="forminput" type="text" [(ngModel)]="coupon.title" >
+            <label  class="formlabel" for="message">Message</label><input class="forminput" type="text" [(ngModel)]="coupon.message" >
+            <label  class="formlabel" for="amount">Stock</label><input class="forminput" type="number" [(ngModel)]="coupon.amount" >
+            <label  class="formlabel" for="price">Price</label><input class="forminput" type="number" [(ngModel)]="coupon.price" >
+            <label  class="formlabel" for="startdate">Start Date</label><input class="forminput" type="date" [(ngModel)]="coupon.startDate" >
+            <label  class="formlabel" for="enddate">End Date</label><input class="forminput" type="text" [(ngModel)]="coupon.endDate" >
+            <label  class="formlabel" for="coupontype">Type</label>
+            <select class="forminput">
+              <option *ngFor="let ct of couponTypes" value="{{ct.valueOf()}}">{{ct.valueOf()}}</option>
+            </select >
+            <label  class="formlabel" for="image">Upload Image</label><input class="forminput" type="file">
+            <!-- TDOD (Yaniv) Add file upload mechnincs-->
+            <button type="submit" class="submitbutton" (click)="submitChanges()">Submit</button>
+        </form>
+      </div>
+</div>

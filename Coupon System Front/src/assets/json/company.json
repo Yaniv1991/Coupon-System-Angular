@@ -1,0 +1,9 @@
+[
+  {"id":112358,"name":"BigCorp","email":"big@corp.com","password":"q1w2e3"},
+  {"id":581312,"name":"SmallBiz","email":"small@biz.com","password":"q1w2e3"},
+  {"id":213455,"name":"LocalBiz","email":"local@biz.com","password":"q1w2e3"},
+  {"id":345589,"name":"TechComp","email":"tech@company.com","password":"q1w2e3"},
+  {"id":144233,"name":"Google","email":"owner@gmail.com","password":"q1w2e3"},
+  {"id":377610,"name":"Apple","email":"owner@apple.com","password":"q1w2e3"},
+  {"id":610987,"name":"Blizzard","email":"support@blizz.com","password":"q1w2e3"}
+]

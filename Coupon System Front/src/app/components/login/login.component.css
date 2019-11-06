@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+}
+.loginForm {
+  width: 80%;
+  height: 80%;
+  background-color:inherit;
+  margin: 0 auto;
+  text-align: center;
+}
+.header {
+  background-color: inherit;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 auto;
+  text-align: center;
+}
+.formLabel {
+  background-color: inherit;
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.2em;
+  font-family: Courier New, monospace;
+  font-weight: 600;
+  font-stretch: expanded;
+  font-size: 22px;
+  text-align: left;
+  /* border: 2px solid black;
+  border-radius: 4px; */
+  display: inline-block;
+  padding: 5px;
+  width: 25%;
+  margin-bottom: 10px;
+}
+.forminput {
+  text-align: left;
+  display: inline-block;
+  width: 75%;
+  height: auto;
+  padding: 10px;
+  padding-left: 50px;
+  border: 2px solid red;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.email {
+  background-image: url('/assets/images/emailicon.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+.password {
+  background-image: url('/assets/images/passwordicon.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+.clientType {
+  background-image: url('/assets/images/usericon.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+.textBox {
+  width: 60%;
+}
+.userLoggedIn {
+  width: 100%;
+  height: 100%;
+  background-color: aquamarine;
+  margin: 0 auto;
+}
+.loggedText {
+  background-color: inherit;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+.submitbutton {
+  background-color: teal;
+  border: 2px solid teal;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;;
+  margin: 0 auto;
+  -webkit-transition-duration: 0.5s; /* Safari */
+  transition-duration: 0.5s;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 50%;
+}
+.submitbutton:hover {
+  background-color: white;
+  color: teal;
+  border: 2px solid teal;
+}

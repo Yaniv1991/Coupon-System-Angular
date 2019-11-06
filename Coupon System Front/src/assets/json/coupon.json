@@ -1,0 +1,10 @@
+[
+  {"id": 100,"amount": 25,"title": "Anime","message": "This is the anime coupon" ,"category": "Stuff","price": 15,"startDate": "15-07-2019","endDate": "15-01-2020","image": "assets/images/Coupons/Anime.png"},
+  {"id": 101,"amount": 30,"title": "Banana","message": "This is a banana coupon" ,"category": "Stuff","price": 5,"startDate": "15-08-2019","endDate": "01-05-2020","image": "assets/images/Coupons/Banana.jpg"},
+  {"id": 102,"amount": 20,"title": "Blastoise","message": "This is a blastoise coupon" ,"category": "Pokemon","price": 15,"startDate": "15-07-2019","endDate": "15-01-2020","image": "assets/images/Coupons/Blastoise.png"},
+  {"id": 103,"amount": 50,"title": "Gyarados","message": "This is a gyarados coupon" ,"category": "Pokemon","price": 15,"startDate": "15-07-2019","endDate": "15-01-2020","image": "assets/images/Coupons/Gyarados.png"},
+  {"id": 104,"amount": 42,"title": "Liverpool","message": "This is a liverpool coupon" ,"category": "Legends","price": 15,"startDate": "15-07-2019","endDate": "15-01-2020","image": "assets/images/Coupons/Liverpool.jpg"},
+  {"id": 105,"amount": 18,"title": "MegaCharizardX","message": "This is a meag charizard coupon" ,"category": "Pokemon","price": 15,"startDate": "15-07-2019","endDate": "15-01-2020","image": "assets/images/Coupons/MegaChrizardX.png"},
+  {"id": 106,"amount": 71,"title": "Mew","message": "This is a mew coupon" ,"category": "Pokemon","price": 15,"startDate": "15-07-2019","endDate": "15-01-2020","image": "assets/images/Coupons/Mew.png"},
+  {"id": 107,"amount": 34,"title": "Psyduck","message": "Psyeyey" ,"category": "Pokemon","price": 15,"startDate": "15-07-2019","endDate": "15-01-2020","image": "assets/images/Coupons/Psyduck.png"},
+  {"id": 108,"amount": 121,"title": "Deadpool","message": "This is a dp coupon" ,"category": "legends","price": 50,"startDate": "01-05-2019","endDate": "31-12-2020","image": "assets/images/Coupons/Deadpool.png"}]

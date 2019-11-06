@@ -1,0 +1,117 @@
+.coupon {
+  border: 5px dotted #bbb; /* Dotted border */
+  width: 100%;
+  border-radius: 15px; /* Rounded border */
+  margin: 0 auto; /* Center the coupon */
+  max-width: 600px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.container {
+  padding: 2px 16px;
+  background-color: #f1f1f1;
+  grid-column: span 2;
+}
+
+.othercontainer {
+  padding: 2px 16px;
+  background-color: #f1f1f1;
+  grid-column: span 2;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.promo {
+  background: #ccc;
+  padding: 3px;
+  grid-column: span 2;
+}
+
+.expire {
+  color: red;
+  grid-column: span 2;
+}
+.purchase {
+  grid-column: span 2;
+  margin: 0 auto;
+}
+.image {
+  grid-column: span 2;
+  margin: 0 auto;
+  max-width: 80%;
+  max-height: 80%;
+}
+.update {
+  grid-column: span 1;
+  margin: 0 auto;
+}
+.delete {
+  grid-column: span 1;
+  margin: 0 auto;
+}
+.buttonpurchase {
+  background-color: gold;
+  border: 2px solid gold;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;;
+  margin: 0 auto;
+  -webkit-transition-duration: 0.5s; /* Safari */
+  transition-duration: 0.5s;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 80%;
+}
+.buttonpurchase:hover {
+  background-color: white;
+  color: gold;
+  border: 2px solid gold;
+}
+.buttonupdate {
+  background-color: teal;
+  border: 2px solid teal;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;;
+  margin: 0 auto;
+  -webkit-transition-duration: 0.5s; /* Safari */
+  transition-duration: 0.5s;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 100%;
+}
+.buttonupdate:hover {
+  background-color: white;
+  color: teal;
+  border: 2px solid teal;
+}
+.buttondelete {
+  background-color: red;
+  border: 2px solid red;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;;
+  margin: 0 auto;
+  -webkit-transition-duration: 0.5s; /* Safari */
+  transition-duration: 0.5s;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 100%;
+}
+.buttondelete:hover {
+  background-color: white;
+  color: red;
+  border: 2px solid red;
+}
