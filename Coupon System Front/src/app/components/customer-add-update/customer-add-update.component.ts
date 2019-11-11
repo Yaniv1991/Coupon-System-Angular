@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Customer } from 'src/app/models/customer';
 import { ActivatedRoute } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-customer-add-update',
@@ -12,7 +13,8 @@ export class CustomerAddUpdateComponent implements OnInit {
   @Input() public customer: Customer;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private service: CustomerService,
+    private customerService: CustomerService,
+    private adminService: AdminService
   ) { }
     public add: boolean;
     private id: number;
@@ -23,13 +25,13 @@ export class CustomerAddUpdateComponent implements OnInit {
     this.add = this.id == 0;
 
     if (!this.add) {
-      this.service.getCustomerById(this.id).subscribe((customer) => this.customer = customer);
+      this.customerService.getCustomerById(this.id).subscribe((customer) => this.customer = customer);
     }
   }
   public submitChanges() {
     if (this.add) {
-      this.service.addCustomer(this.customer);
+      this.adminService.addCustomer(this.customer);
     }
-    this.service.updateCustomer(this.customer);
+    this.adminService.updateCustomer(this.customer);
   }
 }

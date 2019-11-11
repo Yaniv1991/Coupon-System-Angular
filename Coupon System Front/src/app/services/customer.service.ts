@@ -4,6 +4,7 @@ import { Coupon } from '../models/coupon';
 import { HttpClient } from '@angular/common/http';
 import { Customer } from '../models/customer';
 import { Observable } from 'rxjs';
+import { Company } from '../models/company';
 import { CouponType } from '../models/CouponType';
 
 @Injectable({
@@ -11,44 +12,39 @@ import { CouponType } from '../models/CouponType';
 })
 export class CustomerService {
 
-  private service: CouponService;
+  private couponService: CouponService;
 
-  constructor(private http: HttpClient) { }
+  private customerRootUrl = `http://localhost:8080/Customer`;
+  private adminRootUrl = `http://localhost:8080/Admin`;
 
-  public purchase(coup: Coupon) {
-    this.service.purchase(coup);
+constructor(private httpClient: HttpClient) { }
+
+  public purchase(coupon: Coupon): Observable<Coupon> {
+    return this.httpClient.post<Coupon>(this.customerRootUrl + `/Purchase`, coupon, {withCredentials: true} );
   }
 
   public getCoupons(): Coupon[] {
-    this.service.getCoupons(true).subscribe(couponsFromService => couponsFromService);
+    this.couponService.getCoupons(true).subscribe(couponsFromService => couponsFromService);
     return null;
   }
 
   public getByType(type: CouponType): Coupon[] {
-    this.service.getByType(type, true).subscribe(couponList => couponList);
+    this.couponService.getByType(type, true).subscribe(couponList => couponList);
     return null;
   }
 
   public getByPrice(price: number): Coupon[] {
-    this.service.getByPrice(price).subscribe(list => list);
+    this.couponService.getByPrice(price,true).subscribe(list => list);
     return null;
   }
 
   public getCustomerById(id: number): Observable<Customer> {
-    return this.http.get<Customer>('..\assets\json\customer.json', {withCredentials: true});
+    return this.httpClient.get<Customer>(this.adminRootUrl + '/Customer/Get?id=' + id, {withCredentials: true});
   }
 
-  public getCustomerDetails(): Observable<Customer[]> {
-    return this.http.get<Customer[]>('..\assets\json\customer.json', {withCredentials: true});
-  }
-  public addCustomer(customer: Customer): Observable<Customer> {
-    return this.http.post<Customer>('..\assets\json\customer.json', customer, {withCredentials: true});
-  }
-  public updateCustomer(customer: Customer): Observable<Customer> {
-    return this.http.put<Customer>('..\assets\json\customer.json', customer, {withCredentials: true});
-  }
-  public deleteCustomer(customer: Customer): Observable<Customer> {
-    return this.http.delete<Customer>('URL?id=' + customer.id, {withCredentials: true});
+  public getAllCustomers(): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(this.adminRootUrl + "/Customer/GetAll", {withCredentials: true} );
   }
 
+ 
 }

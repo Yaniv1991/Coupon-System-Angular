@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CompanyService } from 'src/app/services/company.service';
 import { Company } from 'src/app/models/company';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-company-add-update',
@@ -13,7 +14,8 @@ export class CompanyAddUpdateComponent implements OnInit {
   @Input() public company: Company;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private service: CompanyService,
+    private companyService: CompanyService,
+    private adminService: AdminService
   ) { }
     public add: boolean;
     private id: number;
@@ -26,14 +28,14 @@ export class CompanyAddUpdateComponent implements OnInit {
     this.add = (this.id == 0);
 
     if (!this.add) {
-      this.service.getCompany(this.id).subscribe((company) => this.company = company);
+      this.companyService.getCompany(this.id).subscribe((company) => this.company = company);
     }
   }
   public submitChanges() {
     if (this.add) {
-      this.service.addCompany(this.company);
+      this.adminService.addCompany(this.company);
     }
-    this.service.updateCompany(this.company);
+    this.adminService.updateCompany(this.company);
   }
 
 }

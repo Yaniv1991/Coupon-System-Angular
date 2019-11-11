@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CouponService } from 'src/app/services/coupon.service';
 import { Coupon } from 'src/app/models/coupon';
 import { CouponType } from 'src/app/models/CouponType';
+import { CompanyService } from 'src/app/services/company.service';
 
 @Component({
   selector: 'app-coupon-add-update',
@@ -14,7 +15,8 @@ export class CouponAddUpdateComponent implements OnInit {
   public coupon: Coupon;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private couponService: CouponService
+    private couponService: CouponService,
+    private companyService: CompanyService
   ) { }
   public add: boolean;
   private id: number;
@@ -32,9 +34,9 @@ export class CouponAddUpdateComponent implements OnInit {
   }
   public submitChanges() {
     if (this.add) {
-      this.couponService.addCoupon(this.coupon);
+      this.companyService.addCoupon(this.coupon);
     }
-    this.couponService.updateCoupon(this.coupon);
+    this.companyService.updateCoupon(this.coupon);
   }
 
 }

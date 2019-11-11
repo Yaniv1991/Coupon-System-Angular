@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Customer } from 'src/app/models/customer';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Router } from '@angular/router';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-customer',
@@ -11,7 +12,9 @@ import { Router } from '@angular/router';
 })
 export class CustomerComponent implements OnInit {
 
-  constructor(private customerService: CustomerService, private router: Router) { }
+  constructor(private customerService: CustomerService,
+    private adminService: AdminService,
+    private router: Router) { }
   @Input() public customer: Customer;
   public url: string;
 
@@ -19,7 +22,7 @@ export class CustomerComponent implements OnInit {
     this.url = '../customerAddOrUpdate/' + this.customer.id;
   }
   public deleteCustomer() {
-    this.customerService.deleteCustomer(this.customer);
+    this.adminService.deleteCustomer(this.customer);
   }
   public updateCustomer() {
     this.router.navigateByUrl('addOrUpdate/update/customer/' + this.customer.id);

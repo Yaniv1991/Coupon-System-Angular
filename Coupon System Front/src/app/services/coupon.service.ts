@@ -9,37 +9,33 @@ import { CouponType } from '../models/CouponType';
 })
 export class CouponService {
 
+  private visitorRootUrl = `http://localhost:8080/Visitor`;
+private customerRootUrl = `http://localhost:8080/Customer`;
+private companyRootUrl = `http://localhost:8080/Company`;
+
     constructor(private httpClient: HttpClient) { }
 
-    public getCoupons(clientLoggedIn: boolean = true): Observable<Coupon[]> {
+    public getCoupons(clientLoggedIn: boolean = false): Observable<Coupon[]> {
       if (clientLoggedIn) {
-        return this.httpClient.get<Coupon[]>('assets/json/coupon.json', {withCredentials: true});
+        return this.httpClient.get<Coupon[]>(this.customerRootUrl + '/getAllPurchasedCoupons', {withCredentials: true});
       }
-      return this.httpClient.get<Coupon[]>('http://localhost:8080/CouponSystemWeb/Coupons/Visitor/getAllCoupons', {withCredentials: true});
+      return this.httpClient.get<Coupon[]>(this.visitorRootUrl + '/GetAllCoupons', {withCredentials: true});
     }
     public getSingleCoupon(id: number): Observable<Coupon> {
-      return this.httpClient.get<Coupon>('assets/json/Singlecoupon.json?id='+ id, {withCredentials: true});
+      return this.httpClient.get<Coupon>(this.visitorRootUrl + `/GetOne/`+ id, {withCredentials: true});
     }
     public getByType(type: CouponType, customer: boolean): Observable<Coupon[]> {
       if (customer) {
-        return this.httpClient.get<Coupon[]>('URL?category=' + type, {withCredentials: true} );
+        return this.httpClient.get<Coupon[]>(this.customerRootUrl + '/getAllPurchasedCoupons/' + type, {withCredentials: true} );
       }
-      return this.httpClient.get<Coupon[]>('URL?category=' + type, {withCredentials: true} );
-    }
-    public getByPrice(price: number): Observable<Coupon[]> {
-      return this.httpClient.get<Coupon[]>('URL?price=' + price, {withCredentials: true} );
-    }
-    public addCoupon(coupon: Coupon): Observable<Coupon> {
-      return this.httpClient.post<Coupon>('URL', coupon, {withCredentials: true} );
-    }
-    public removeCoupon(coupon: Coupon): Observable<Coupon> {
-      return this.httpClient.delete<Coupon>('URL?id=' + coupon.id, {withCredentials: true} );
-    }
-    public updateCoupon(coupon: Coupon): Observable<Coupon> {
-      return this.httpClient.put<Coupon>('URL', coupon, {withCredentials: true} );
-    }
-    public purchase(coupon: Coupon): Observable<Coupon> {
-      return this.httpClient.post<Coupon>('URL', coupon, {withCredentials: true} );
+      return this.httpClient.get<Coupon[]>(this.visitorRootUrl + '/GetAllCoupons/' + type, {withCredentials: true} );
     }
 
+    public getByPrice(price: number,isCustomer: boolean): Observable<Coupon[]> {
+      const priceContextPath = '/GetAllCouponsByPrice?price=';
+      if(isCustomer){
+        return this.httpClient.get<Coupon[]>(this.customerRootUrl + priceContextPath + price, {withCredentials: true} );    
+      }
+      return this.httpClient.get<Coupon[]>(this.visitorRootUrl + priceContextPath + price, {withCredentials: true} );
+    }
 }
