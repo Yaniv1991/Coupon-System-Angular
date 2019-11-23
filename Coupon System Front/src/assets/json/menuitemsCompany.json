@@ -1,0 +1,4 @@
+[
+  {"description":"Home", "routePath":"login"},
+  {"description": "My Coupons", "routePath": "coupons/company"}
+]

@@ -14,7 +14,7 @@ export class CompanyService {
 
   private couponService: CouponService;
 
-private companyRootUrl = "http://localhost:8080/Company";
+private companyRootUrl = 'http://localhost:8080/Company';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -24,8 +24,8 @@ private companyRootUrl = "http://localhost:8080/Company";
     return methodCoupons;
   }
   public getSingle(id: number): Coupon {
-    this.couponService.getSingleCoupon(id).subscribe(single =>  single);
-    return null;
+    this.couponService.getSingleCoupon(id).subscribe( singleCoupon => singleCoupon);
+    return null; // ??
   }
 
   public addCoupon(coupon: Coupon): Observable<Coupon> {
@@ -43,11 +43,12 @@ private companyRootUrl = "http://localhost:8080/Company";
     this.couponService.getByType(type, false).subscribe(couponFromService => couponFromService );
     return null;
   }
-  public getCompanyDetails(): Observable<Company[]> {
+  public getCompanies(): Observable<Company[]> { // ?
     return this.httpClient.get<Company[]>('..\assets\json\company.json', {withCredentials: true});
   }
   public getCompany(id: number): Observable<Company> {
-    return this.httpClient.get<Company>('..\assets\json\company.json', {withCredentials: true});
+    // return this.httpClient.get<Company>('..\assets\json\company.json', {withCredentials: true});
+    return this.httpClient.get<Company>(this.companyRootUrl + '/Get/' + id, {withCredentials: true} );
   }
- 
+
 }

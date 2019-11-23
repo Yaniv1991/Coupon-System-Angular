@@ -20,7 +20,6 @@ export class CompanyAddUpdateComponent implements OnInit {
     public add: boolean;
     private id: number;
   ngOnInit() {
-    // alert('I am working');
     const str: string = this.activatedRoute.snapshot.params.id.toString();
     // tslint:disable-next-line: radix
     this.id = +str;
@@ -29,13 +28,16 @@ export class CompanyAddUpdateComponent implements OnInit {
 
     if (!this.add) {
       this.companyService.getCompany(this.id).subscribe((company) => this.company = company);
+    } else {
+      this.company = new Company(this.id , '' , '', '');
     }
   }
   public submitChanges() {
     if (this.add) {
-      this.adminService.addCompany(this.company);
+      this.adminService.addCompany(this.company).subscribe();
+    } else {
+      this.adminService.updateCompany(this.company).subscribe();
     }
-    this.adminService.updateCompany(this.company);
   }
 
 }

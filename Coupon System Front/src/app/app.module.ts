@@ -21,6 +21,7 @@ import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { CustomerAddUpdateComponent } from './components/customer-add-update/customer-add-update.component';
 import { CompanyAddUpdateComponent } from './components/company-add-update/company-add-update.component';
 import { CouponAddUpdateComponent } from './components/coupon-add-update/coupon-add-update.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { CouponAddUpdateComponent } from './components/coupon-add-update/coupon-
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [LayoutComponent]
 })
 export class AppModule { }

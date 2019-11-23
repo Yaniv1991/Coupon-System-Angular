@@ -1,32 +1,5 @@
 <div *ngIf="!submitted" class="loginForm">
   <form #formInfo="ngForm">
-    <!-- <table>
-      <tr>
-        <td colspan='2'><span class="header">Log-in</span></td>
-      </tr>
-      <tr>
-        <td class="formLabel"><label for="email">Email</label></td>
-        <td class="forminput"><input [(ngModel)]="email" type="email" class="textBox" required name="name" id="email"/></td>
-      </tr>
-      <tr>
-        <td class="formLabel"><label for="password">Password</label></td>
-        <td class="forminput"><input [(ngModel)]="password" type="text" class="textBox" required  name="password" id="password"/></td>
-      </tr>
-      <tr>
-        <td class="formLabel"><label for="clientType">Client Type</label></td>
-        <td class="forminput"><select [(ngModel)]="clientType" name="clientType" id="clientType">
-          <option value="ADMIN">Admin</option>
-          <option value="COMPANY">Company</option>
-          <option value="CUSTOMER">Customer</option>
-        </select>
-      </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <button (click)="onSubmit()" [disabled] = "!formInfo.form.valid">Submit</button>
-        </td>
-      </tr>
-    </table> -->
       <div class="header">Log-in</div>
         <label for="email" class="formLabel">Email</label>
         <input [(ngModel)]="email" type="email" class="forminput email" required name="name" id="email"/>

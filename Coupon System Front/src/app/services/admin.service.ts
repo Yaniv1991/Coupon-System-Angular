@@ -9,12 +9,14 @@ import { Observable } from 'rxjs';
 })
 export class AdminService {
 
-  private adminRootUrl = `httpClient://localhost:8080/Admin`;
+  private adminRootUrl = `http://localhost:8080/Admin`;
 
   constructor(private httpClient: HttpClient) { }
 
   public addCompany(company: Company): Observable<Company> {
-    return this.httpClient.post<Company>(this.adminRootUrl + "Company/Create", company, {withCredentials: true});
+    console.log(company);
+    console.log(this.adminRootUrl + '/Company/Create');
+    return this.httpClient.post<Company>(this.adminRootUrl + '/Company/Create', company, {withCredentials: true});
   }
 
   public getCompanyById(id: number): Observable<Company> {
@@ -22,15 +24,15 @@ export class AdminService {
   }
 
   public getAllCompanies(): Observable<Company[]> {
-    return this.httpClient.get<Company[]>('URL', {withCredentials: true} );
+    return this.httpClient.get<Company[]>(this.adminRootUrl + '/Company/GetAll', {withCredentials: true} );
   }
 
   public updateCompany(company: Company): Observable<Company> {
-    return this.httpClient.put<Company>(this.adminRootUrl + "/Company/Update", company, {withCredentials: true});
+    return this.httpClient.put<Company>(this.adminRootUrl + '/Company/Update', company, {withCredentials: true});
   }
 
   public deleteCompany(company: Company): Observable<Company> {
-    return this.httpClient.delete<Company>( this.adminRootUrl + "/Company/Remove/" + company.id, {withCredentials: true});
+    return this.httpClient.delete<Company>( this.adminRootUrl + '/Company/Remove/' + company.id, {withCredentials: true});
   }
 
 
@@ -49,7 +51,7 @@ export class AdminService {
   public updateCustomer(customer: Customer): Observable<Customer> {
     return this.httpClient.put<Customer>(this.adminRootUrl + '/Customer/Update', customer, {withCredentials: true});
   }
-  
+
   public deleteCustomer(customer: Customer): Observable<Customer> {
     return this.httpClient.delete<Customer>(this.adminRootUrl + 'Customer/Remove/' + customer.id, {withCredentials: true});
   }
