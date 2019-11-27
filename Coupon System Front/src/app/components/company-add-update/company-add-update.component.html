@@ -8,13 +8,14 @@
     </form>
   </div>
   <div *ngIf="!add" class="wrapper">
-    <div class="form">
+      <img src="assets/images/Loading_Infinity.gif" *ngIf="!company">
+    <div class="form" *ngIf="company">
       <form>
-        <label class="formlabel" for="name">Company Name</label><input class="forminput" type="text" [(ngModel)]="company.name">
-        <label class="formlabel" for="email">Email</label><input class="forminput" type="email" [(ngModel)]="company.email">
-        <label class="formlabel" for="password">Password</label><input class="forminput" type="password" [(ngModel)]="company.password">
+        <label class="formlabel" for="company_name">Company Name</label><input class="forminput" type="text" [(ngModel)]="company.name" name="name">
+        <label class="formlabel" for="email">Email</label><input class="forminput" type="email" [(ngModel)]="company.email" name="email">
+        <label class="formlabel" for="password">Password</label><input class="forminput" type="password" [(ngModel)]="company.password" name="password">
         <button type="submit" class="submitbutton" (click)="submitChanges()">Submit</button>
       </form>
     </div>
   </div>
-</div> -->
+</div>

@@ -17,15 +17,12 @@ export class CouponComponent implements OnInit {
   private router: Router;
   public url: string;
   constructor(private couponService: CouponService,
-    private companyService: CompanyService,
-    private customerService: CustomerService,
-    private activatedRoute: ActivatedRoute) { }
+              private companyService: CompanyService,
+              private customerService: CustomerService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     const id = this.coupon ? this.coupon.id : this.activatedRoute.snapshot.params.id;
-    // this.service.getSingleCoupon(id).subscribe(coupon => { this.coupon = coupon; });
-
-    // For early stage production only!!! >_<
     this.couponService.getCoupons(this.isCustomer).subscribe(coupons => {
   // tslint:disable-next-line: triple-equals
   this.coupon = coupons.find(c => id == c.id);

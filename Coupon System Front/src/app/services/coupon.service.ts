@@ -22,7 +22,7 @@ private companyRootUrl = `http://localhost:8080/Company`;
       return this.httpClient.get<Coupon[]>(this.visitorRootUrl + '/GetAllCoupons', {withCredentials: true});
     }
     public getSingleCoupon(id: number): Observable<Coupon> {
-      return this.httpClient.get<Coupon>(this.visitorRootUrl + `/GetOne/`+ id, {withCredentials: true});
+      return this.httpClient.get<Coupon>(this.visitorRootUrl + `/GetOne/` + id, {withCredentials: true});
     }
     public getByType(type: CouponType, customer: boolean): Observable<Coupon[]> {
       if (customer) {
@@ -31,10 +31,10 @@ private companyRootUrl = `http://localhost:8080/Company`;
       return this.httpClient.get<Coupon[]>(this.visitorRootUrl + '/GetAllCoupons/' + type, {withCredentials: true} );
     }
 
-    public getByPrice(price: number,isCustomer: boolean): Observable<Coupon[]> {
+    public getByPrice(price: number, isCustomer: boolean): Observable<Coupon[]> {
       const priceContextPath = '/GetAllCouponsByPrice?price=';
-      if(isCustomer){
-        return this.httpClient.get<Coupon[]>(this.customerRootUrl + priceContextPath + price, {withCredentials: true} );    
+      if (isCustomer) {
+        return this.httpClient.get<Coupon[]>(this.customerRootUrl + priceContextPath + price, {withCredentials: true} );
       }
       return this.httpClient.get<Coupon[]>(this.visitorRootUrl + priceContextPath + price, {withCredentials: true} );
     }

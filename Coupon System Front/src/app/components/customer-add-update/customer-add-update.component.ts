@@ -26,6 +26,8 @@ export class CustomerAddUpdateComponent implements OnInit {
 
     if (!this.add) {
       this.customerService.getCustomerById(this.id).subscribe((customer) => this.customer = customer);
+    } else {
+      this.customer = new Customer(this.id, '' , '' , '' , '' );
     }
   }
   public submitChanges() {

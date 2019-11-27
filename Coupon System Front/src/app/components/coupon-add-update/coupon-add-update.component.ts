@@ -30,6 +30,8 @@ export class CouponAddUpdateComponent implements OnInit {
     this.add = this.id == 0;
     if (!this.add) {
       this.couponService.getSingleCoupon(this.id).subscribe((coupon) => this.coupon = coupon);
+    } else {
+      this.coupon = new Coupon(this.id , 0 , '' , '' , CouponType.FOOD , 0 , null , null , '' ) ;
     }
   }
   public submitChanges() {

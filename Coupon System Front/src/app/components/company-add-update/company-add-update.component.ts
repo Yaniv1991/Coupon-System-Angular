@@ -27,7 +27,7 @@ export class CompanyAddUpdateComponent implements OnInit {
     this.add = (this.id == 0);
 
     if (!this.add) {
-      this.companyService.getCompany(this.id).subscribe((company) => this.company = company);
+      this.adminService.getCompanyById(this.id).subscribe((company) => this.company = company);
     } else {
       this.company = new Company(this.id , '' , '', '');
     }

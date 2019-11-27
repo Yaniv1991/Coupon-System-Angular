@@ -39,7 +39,7 @@
         <td>
           <form>
             <label for="couponType" class="formLabel">Category</label>
-            <select [(ngModel)]="type" class="forminput" name="couponType">
+            <select [(ngModel)]="type" class="forminput" id="coupon_type" name="couponType">
                 <option value="All">All</option>
               <option value="AUTOMOBILE">Automobile</option>
               <option value="CAMPING">Camping</option>
@@ -61,7 +61,7 @@
         </td>
         <td>
           <form>
-            <label for="price" class="formLabel">Price</label><input type="number" class="forminput" [(ngModel)]="price">
+            <label for="price" class="formLabel">Price</label><input type="number" class="forminput" [(ngModel)]="price" name="price">
           </form>
         </td>
         <td>

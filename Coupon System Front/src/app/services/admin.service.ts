@@ -20,7 +20,7 @@ export class AdminService {
   }
 
   public getCompanyById(id: number): Observable<Company> {
-    return this.httpClient.get<Company>('URL?id=' + id, {withCredentials: true} );
+    return this.httpClient.get<Company>(this.adminRootUrl + '/Company/Get?id=' + id, {withCredentials: true} );
   }
 
   public getAllCompanies(): Observable<Company[]> {
@@ -45,7 +45,7 @@ export class AdminService {
   }
 
   public getAllCustomers(): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>('URL', {withCredentials: true} );
+    return this.httpClient.get<Customer[]>(this.adminRootUrl +  '/Customer/GetAll', {withCredentials: true} );
   }
 
   public updateCustomer(customer: Customer): Observable<Customer> {
@@ -53,6 +53,6 @@ export class AdminService {
   }
 
   public deleteCustomer(customer: Customer): Observable<Customer> {
-    return this.httpClient.delete<Customer>(this.adminRootUrl + 'Customer/Remove/' + customer.id, {withCredentials: true});
+    return this.httpClient.delete<Customer>(this.adminRootUrl + '/Customer/Remove/' + customer.id, {withCredentials: true});
   }
 }

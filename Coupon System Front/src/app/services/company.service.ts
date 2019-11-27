@@ -43,12 +43,12 @@ private companyRootUrl = 'http://localhost:8080/Company';
     this.couponService.getByType(type, false).subscribe(couponFromService => couponFromService );
     return null;
   }
-  public getCompanies(): Observable<Company[]> { // ?
-    return this.httpClient.get<Company[]>('..\assets\json\company.json', {withCredentials: true});
-  }
-  public getCompany(id: number): Observable<Company> {
-    // return this.httpClient.get<Company>('..\assets\json\company.json', {withCredentials: true});
-    return this.httpClient.get<Company>(this.companyRootUrl + '/Get/' + id, {withCredentials: true} );
-  }
+  // public getCompanies(): Observable<Company[]> { // ?
+  //   return this.httpClient.get<Company[]>(this.companyRootUrl + '/GetAll', {withCredentials: true} );
+  // }
+  // public getCompany(id: number): Observable<Company> {
+  //   // return this.httpClient.get<Company>('..\assets\json\company.json', {withCredentials: true});
+  //   return this.httpClient.get<Company>(this.companyRootUrl + '/Get' + id, {withCredentials: true} );
+  // }
 
 }

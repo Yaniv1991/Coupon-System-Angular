@@ -28,7 +28,9 @@ export class AuthenticationService {
     login(email: string, password: string, clientType: ClientType) {
         this.user = {email, password, clientType};
         this.httpClient.post<User>(this.loginUrl, this.user, {withCredentials: true}).subscribe(userFromDB => this.user = userFromDB);
-        this.cookieService.set('clientType', clientType.toString());
+        if (this.user) {
+            this.cookieService.set('clientType', clientType.toString());
+        }
     }
 
     logout() {

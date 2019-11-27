@@ -18,7 +18,6 @@ export class CompaniesComponent implements OnInit {
 
   ngOnInit() {
     this.adminService.getAllCompanies().subscribe((companies) => this.companies = companies);
-    // this.client.get<Company[]>('/assets/json/company.json').subscribe((companies) => {this.companies = companies; });
   }
   public goToAdd() {
     this.router.navigateByUrl('companyAddOrUpdate/add/0');
