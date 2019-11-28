@@ -9,9 +9,9 @@ import { CouponType } from '../models/CouponType';
 })
 export class CouponService {
 
-  private visitorRootUrl = `http://localhost:8080/Visitor`;
-private customerRootUrl = `http://localhost:8080/Customer`;
-private companyRootUrl = `http://localhost:8080/Company`;
+  private visitorRootUrl = `http://localhost:8080/Rest/Visitor`;
+private customerRootUrl = `http://localhost:8080/Rest/Customer`;
+private companyRootUrl = `http://localhost:8080/Rest/Company`;
 
     constructor(private httpClient: HttpClient) { }
 

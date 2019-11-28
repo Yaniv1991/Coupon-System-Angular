@@ -14,8 +14,8 @@ export class CustomerService {
 
   private couponService: CouponService;
 
-  private customerRootUrl = `http://localhost:8080/Customer`;
-  private adminRootUrl = `http://localhost:8080/Admin`;
+  private customerRootUrl = `http://localhost:8080/Rest/Customer`;
+  private adminRootUrl = `http://localhost:8080/Rest/Admin`;
 
 constructor(private httpClient: HttpClient) { }
 
@@ -34,7 +34,7 @@ constructor(private httpClient: HttpClient) { }
   }
 
   public getByPrice(price: number): Coupon[] {
-    this.couponService.getByPrice(price,true).subscribe(list => list);
+    this.couponService.getByPrice(price , true).subscribe(list => list);
     return null;
   }
 
@@ -43,8 +43,7 @@ constructor(private httpClient: HttpClient) { }
   }
 
   public getAllCustomers(): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>(this.adminRootUrl + "/Customer/GetAll", {withCredentials: true} );
+    return this.httpClient.get<Customer[]>(this.adminRootUrl + '/Customer/GetAll', {withCredentials: true} );
   }
 
- 
 }

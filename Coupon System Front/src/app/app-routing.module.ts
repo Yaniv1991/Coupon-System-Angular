@@ -19,7 +19,6 @@ const routes: Routes = [
   {path: 'coupons/coupon/:id', component: CouponComponent},
   {path: 'customers', component: CustomersComponent},
   {path: 'companies', component: CompaniesComponent},
-  {path: 'login', component: LoginComponent},
   {path: 'companyAddOrUpdate/:id', component: CompanyAddUpdateComponent},
   {path: 'couponAddOrUpdate/:id', component: CouponAddUpdateComponent},
   {path: 'customerAddOrUpdate/:id', component: CustomerAddUpdateComponent},

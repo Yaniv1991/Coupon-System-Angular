@@ -14,7 +14,7 @@ export class CompanyService {
 
   private couponService: CouponService;
 
-private companyRootUrl = 'http://localhost:8080/Company';
+private companyRootUrl = 'http://localhost:8080/Rest/Company';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -29,26 +29,19 @@ private companyRootUrl = 'http://localhost:8080/Company';
   }
 
   public addCoupon(coupon: Coupon): Observable<Coupon> {
-    return this.httpClient.post<Coupon>(this.companyRootUrl + '/Add', coupon, {withCredentials: true} );
+    console.log('Adding coupon ' + coupon);
+    return this.httpClient.post<Coupon>(this.companyRootUrl + '/Create', coupon, {withCredentials: true} );
   }
   public removeCoupon(coupon: Coupon): Observable<Coupon> {
     return this.httpClient.delete<Coupon>(this.companyRootUrl + '/Remove?id=' + coupon.id, {withCredentials: true} );
   }
   public updateCoupon(coupon: Coupon): Observable<Coupon> {
+    console.log('Updating coupon ' + coupon);
     return this.httpClient.put<Coupon>(this.companyRootUrl + '/Update', coupon, {withCredentials: true} );
   }
-
 
   public getByType(type: CouponType): Coupon[] {
     this.couponService.getByType(type, false).subscribe(couponFromService => couponFromService );
     return null;
   }
-  // public getCompanies(): Observable<Company[]> { // ?
-  //   return this.httpClient.get<Company[]>(this.companyRootUrl + '/GetAll', {withCredentials: true} );
-  // }
-  // public getCompany(id: number): Observable<Company> {
-  //   // return this.httpClient.get<Company>('..\assets\json\company.json', {withCredentials: true});
-  //   return this.httpClient.get<Company>(this.companyRootUrl + '/Get' + id, {withCredentials: true} );
-  // }
-
 }

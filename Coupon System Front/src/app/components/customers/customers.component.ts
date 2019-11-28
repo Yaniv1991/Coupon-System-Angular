@@ -18,12 +18,5 @@ export class CustomersComponent implements OnInit {
 
   ngOnInit() {
     this.adminService.getAllCustomers().subscribe((customers) => this.customers = customers) ;
-    // this.service.getCustomerDetails().subscribe((customers) => this.customers = customers);
-    // tslint:disable-next-line: max-line-length
-    // this.client.get<Customer[]>('/assets/json/customer.json').subscribe((customers) => {this.customers = customers; });
   }
-  public doStuff() {
-    this.router.navigateByUrl('addOrUpdate/add/cutomer/0');
-  }
-
 }

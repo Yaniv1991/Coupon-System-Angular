@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CouponService } from 'src/app/services/coupon.service';
 import { Coupon } from 'src/app/models/coupon';
 import { CouponType } from 'src/app/models/CouponType';
@@ -16,17 +16,18 @@ export class CouponAddUpdateComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private couponService: CouponService,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private router: Router
   ) { }
   public add: boolean;
   private id: number;
+  private url: string;
   public couponTypes: CouponType[] = [CouponType.AUTOMOBILE, CouponType.CAMPING, CouponType.COMPUTER,
   CouponType.ELECTRICITY];
   ngOnInit() {
-
-    // alert('I am working');
+    this.url = '../coupons/company';
     this.id = this.activatedRoute.snapshot.params.id;
-    // tslint:disable-next-line: triple-equals
+    // tslint:disable-next-line:triple-equals
     this.add = this.id == 0;
     if (!this.add) {
       this.couponService.getSingleCoupon(this.id).subscribe((coupon) => this.coupon = coupon);
@@ -36,9 +37,10 @@ export class CouponAddUpdateComponent implements OnInit {
   }
   public submitChanges() {
     if (this.add) {
-      this.companyService.addCoupon(this.coupon);
+      this.companyService.addCoupon(this.coupon).subscribe( () => {this.router.navigateByUrl(this.url); } );
+    } else {
+      this.companyService.updateCoupon(this.coupon).subscribe(() => {this.router.navigateByUrl(this.url); } );
     }
-    this.companyService.updateCoupon(this.coupon);
   }
 
 }

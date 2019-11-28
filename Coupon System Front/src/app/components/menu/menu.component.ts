@@ -23,6 +23,6 @@ export class MenuComponent implements OnInit {
   }
 
   public refresh() {
-    location.reload();
+    location.reload(true);
   }
 }

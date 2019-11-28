@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class AdminService {
 
-  private adminRootUrl = `http://localhost:8080/Admin`;
+  private adminRootUrl = `http://localhost:8080/Rest/Admin`;
 
   constructor(private httpClient: HttpClient) { }
 

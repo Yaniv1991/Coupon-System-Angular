@@ -14,7 +14,6 @@ export class MenuService {
               private authenticationService: AuthenticationService) { }
 
   public getMenuItems(): Observable<MenuItem[]> {
-    console.log('Menu items service is working');
     this.authenticationService.getClientType();
     return this.httpClient.get<MenuItem[]>(this.getMenuItemsByClientType());
   }

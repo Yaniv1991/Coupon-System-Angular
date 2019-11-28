@@ -4,6 +4,7 @@ import { CouponService } from 'src/app/services/coupon.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyService } from 'src/app/services/company.service';
 import { CustomerService } from 'src/app/services/customer.service';
+import { PromptService } from 'src/app/services/prompt.service';
 
 @Component({
   selector: 'app-coupon',
@@ -19,6 +20,7 @@ export class CouponComponent implements OnInit {
   constructor(private couponService: CouponService,
               private companyService: CompanyService,
               private customerService: CustomerService,
+              private promptService: PromptService,
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -29,14 +31,13 @@ export class CouponComponent implements OnInit {
   this.url = '/couponAddOrUpdate/' + this.coupon.id;
 });
   }
+  public promptMessage() {
+   this.promptService.promptBeforeDelete('Delete Coupon ' + this.coupon.title , () => {this.deleteCoupon(); } );
+  }
   public deleteCoupon() {
-    this.companyService.removeCoupon(this.coupon);
+    this.companyService.removeCoupon(this.coupon).subscribe(() => {location.reload(true); });
   }
   public purchaseCoupon() {
-    this.customerService.purchase(this.coupon);
+    this.customerService.purchase(this.coupon).subscribe(() => {location.reload(true); });
   }
-  public updateCoupon() {
-    this.router.navigateByUrl('url');
-  }
-
 }

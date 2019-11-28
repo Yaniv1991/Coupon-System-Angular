@@ -5,6 +5,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/models/user';
 import { ClientType } from 'src/app/models/clientType';
 import { MenuComponent } from '../menu/menu.component';
+import { Action } from 'rxjs/internal/scheduler/Action';
 
 
 @Component({
@@ -30,8 +31,11 @@ public isInvalid(): boolean {
 }
 
   public onSubmit() {
-    this.authenticationService.login(this.email, this.password, this.clientType);
-    this.menuComponent.refresh() ; // this should refresh the menu
+    this.authenticationService.login(this.email, this.password, this.clientType , () => {
+      console.log('Success is working'); this.menuComponent.refresh(); } )
+    .subscribe(clientType => { this.clientType = clientType;
+                              //  this.menuComponent.refresh() ; // this should refresh the menu
+    });
   }
   public logout() {
     this.authenticationService.logout();
