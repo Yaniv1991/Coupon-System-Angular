@@ -34,7 +34,8 @@ private companyRootUrl = `http://localhost:8080/Rest/Company`;
     public getByPrice(price: number, isCustomer: boolean): Observable<Coupon[]> {
       const priceContextPath = '/GetAllCouponsByPrice?price=';
       if (isCustomer) {
-        return this.httpClient.get<Coupon[]>(this.customerRootUrl + priceContextPath + price, {withCredentials: true} );
+        return this.httpClient.get<Coupon[]>(this.customerRootUrl +
+           '/getAllPurchasedCouponsByPrice?price=' + price, {withCredentials: true} );
       }
       return this.httpClient.get<Coupon[]>(this.visitorRootUrl + priceContextPath + price, {withCredentials: true} );
     }

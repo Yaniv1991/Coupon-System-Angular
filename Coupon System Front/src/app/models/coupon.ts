@@ -6,7 +6,7 @@ export class Coupon {
               public amount: number,
               public title: string,
               public description: string,
-              public category: CouponType,
+              public couponType: CouponType,
               public price: number,
               public startDate: Date,
               public endDate: Date,

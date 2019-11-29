@@ -16,13 +16,13 @@ export class CouponComponent implements OnInit {
   @Input() public coupon: Coupon;
   @Input() public isCustomer: boolean;
   @Input() public purchased: boolean;
-  private router: Router;
   public url: string;
   constructor(private couponService: CouponService,
               private companyService: CompanyService,
               private customerService: CustomerService,
               private promptService: PromptService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     const id = this.coupon ? this.coupon.id : this.activatedRoute.snapshot.params.id;
@@ -44,7 +44,7 @@ export class CouponComponent implements OnInit {
   public purchaseCoupon() {
     this.customerService.purchase(this.coupon)
     .subscribe(() => { this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
-      this.router.navigateByUrl('/coupons/customer'); });
+      this.router.navigateByUrl('/coupons/isCustomer'); });
   });
   }
 }

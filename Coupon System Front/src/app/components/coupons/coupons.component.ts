@@ -13,10 +13,13 @@ export class CouponsComponent implements OnInit {
 
   public coupons: Coupon[];
   public price: number;
-  public type: CouponType;
+  public couponType: CouponType;
   public isCustomer: boolean;
   public purchased: boolean;
-  constructor(private service: CouponService, private activatedRoute: ActivatedRoute) {
+  constructor(private service: CouponService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router
+     ) {
    }
 
   ngOnInit() {
@@ -25,30 +28,20 @@ export class CouponsComponent implements OnInit {
     if (this.activatedRoute.snapshot.params.myCoupons === 'myCoupons') {
       this.purchased = true;
       this.isCustomer = true;
-      this.service.getCoupons(true).subscribe(purchasedCoupons => {this.coupons = purchasedCoupons; });
     } else {
       this.purchased =  false;
-      this.service.getCoupons(false).subscribe(list => {this.coupons = list; });
     }
+    this.service.getCoupons(this.purchased).subscribe(list => {this.coupons = list; });
   }
   public searchByType() {
-    // tslint:disable-next-line: prefer-const
-    let selected: Coupon[];
-    this.coupons.forEach(element => {
-      // tslint:disable-next-line: triple-equals
-      if (element.category == this.type) {
-        selected.push(element);
-      }
-    });
+    if (this.couponType.toString() === 'All') {
+      this.service.getCoupons(this.purchased).subscribe(list => {this.coupons = list; });
+    } else {
+      this.service.getByType(this.couponType, this.isCustomer).subscribe((coupons) => {this.coupons = coupons; } );
+    }
   }
   public searchByPrice() {
-    // tslint:disable-next-line: prefer-const
-    let selected: Coupon[];
-    this.coupons.forEach(element => {
-      // tslint:disable-next-line: triple-equals
-      if (element.price <= this.price) {
-        selected.push(element);
-      }
-    });
+    this.service.getByPrice(this.price, this.isCustomer).subscribe((coupons) => {this.coupons = coupons; } );
   }
+
 }
