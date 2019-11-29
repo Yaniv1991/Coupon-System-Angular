@@ -21,7 +21,7 @@ export class CompanyAddUpdateComponent implements OnInit {
     private id: number;
     private url: string;
   ngOnInit() {
-    this.url = '../companies';
+    this.url = '/companies';
     const str: string = this.activatedRoute.snapshot.params.id.toString();
     // tslint:disable-next-line: radix
     this.id = +str;

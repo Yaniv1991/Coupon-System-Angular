@@ -7,7 +7,7 @@
   <img [src]="coupon.image" class="image">
   <div class="container" style="background-color:white">
     <h2><b>{{coupon.price}} ILS</b></h2>
-    <p>{{coupon.message}}</p>
+    <p>{{coupon.description}}</p>
   </div>
   <div class="container">
     <p>Only&nbsp;<span class="promo">{{coupon.amount}}</span>&nbsp;left in stock</p>
@@ -15,7 +15,7 @@
   </div>
   <div *ngIf="isCustomer" class="container">
     <div class="purchase">
-      <button class="buttonpurchase" (click)="purchaseCoupon()">Purchase</button>
+      <button class="buttonpurchase" *ngIf="!purchased" (click)="purchaseCoupon()">Purchase</button>
     </div>
   </div>
   <div *ngIf="!isCustomer" class="othercontainer">

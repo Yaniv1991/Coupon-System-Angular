@@ -29,7 +29,6 @@ private companyRootUrl = 'http://localhost:8080/Rest/Company';
   }
 
   public addCoupon(coupon: Coupon): Observable<Coupon> {
-    console.log('Adding coupon ' + coupon);
     return this.httpClient.post<Coupon>(this.companyRootUrl + '/Create', coupon, {withCredentials: true} );
   }
   public removeCoupon(coupon: Coupon): Observable<Coupon> {

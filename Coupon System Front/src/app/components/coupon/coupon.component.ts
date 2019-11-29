@@ -15,6 +15,7 @@ export class CouponComponent implements OnInit {
 
   @Input() public coupon: Coupon;
   @Input() public isCustomer: boolean;
+  @Input() public purchased: boolean;
   private router: Router;
   public url: string;
   constructor(private couponService: CouponService,
@@ -25,19 +26,25 @@ export class CouponComponent implements OnInit {
 
   ngOnInit() {
     const id = this.coupon ? this.coupon.id : this.activatedRoute.snapshot.params.id;
-    this.couponService.getCoupons(this.isCustomer).subscribe(coupons => {
+    this.couponService.getSingleCoupon(id).subscribe(coupon => {
+      this.coupon = coupon;
   // tslint:disable-next-line: triple-equals
-  this.coupon = coupons.find(c => id == c.id);
-  this.url = '/couponAddOrUpdate/' + this.coupon.id;
+      this.url = '/couponAddOrUpdate/' + this.coupon.id;
 });
   }
   public promptMessage() {
    this.promptService.promptBeforeDelete('Delete Coupon ' + this.coupon.title , () => {this.deleteCoupon(); } );
   }
   public deleteCoupon() {
-    this.companyService.removeCoupon(this.coupon).subscribe(() => {location.reload(true); });
-  }
+    this.companyService.removeCoupon(this.coupon)
+    .subscribe(() => { this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl('/coupons/company'); });
+  });
+}
   public purchaseCoupon() {
-    this.customerService.purchase(this.coupon).subscribe(() => {location.reload(true); });
+    this.customerService.purchase(this.coupon)
+    .subscribe(() => { this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl('/coupons/customer'); });
+  });
   }
 }

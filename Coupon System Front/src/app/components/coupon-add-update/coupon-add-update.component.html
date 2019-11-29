@@ -33,7 +33,7 @@
     <div class="form" *ngIf="coupon">
         <form>
             <label  class="formlabel" for="title">Title</label><input class="forminput" type="text" [(ngModel)]="coupon.title" name="title" >
-            <label  class="formlabel" for="message">Message</label><input class="forminput" type="text" [(ngModel)]="coupon.message" name="message" >
+            <label  class="formlabel" for="message">Description</label><input class="forminput" type="text" [(ngModel)]="coupon.description" name="description" >
             <label  class="formlabel" for="amount">Stock</label><input class="forminput" type="number" [(ngModel)]="coupon.amount" name="amount">
             <label  class="formlabel" for="price">Price</label><input class="forminput" type="number" [(ngModel)]="coupon.price" name="price">
             <label  class="formlabel" for="startdate">Start Date</label><input class="forminput" type="date" [(ngModel)]="coupon.startDate" name="startDate">

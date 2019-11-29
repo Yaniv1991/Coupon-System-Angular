@@ -25,7 +25,7 @@ export class CouponAddUpdateComponent implements OnInit {
   public couponTypes: CouponType[] = [CouponType.AUTOMOBILE, CouponType.CAMPING, CouponType.COMPUTER,
   CouponType.ELECTRICITY];
   ngOnInit() {
-    this.url = '../coupons/company';
+    this.url = '/coupons/company';
     this.id = this.activatedRoute.snapshot.params.id;
     // tslint:disable-next-line:triple-equals
     this.add = this.id == 0;

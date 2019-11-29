@@ -15,8 +15,8 @@ private companyRootUrl = `http://localhost:8080/Rest/Company`;
 
     constructor(private httpClient: HttpClient) { }
 
-    public getCoupons(clientLoggedIn: boolean = false): Observable<Coupon[]> {
-      if (clientLoggedIn) {
+    public getCoupons(getAllPurchasedCoupons: boolean = false): Observable<Coupon[]> {
+      if (getAllPurchasedCoupons) {
         return this.httpClient.get<Coupon[]>(this.customerRootUrl + '/getAllPurchasedCoupons', {withCredentials: true});
       }
       return this.httpClient.get<Coupon[]>(this.visitorRootUrl + '/GetAllCoupons', {withCredentials: true});

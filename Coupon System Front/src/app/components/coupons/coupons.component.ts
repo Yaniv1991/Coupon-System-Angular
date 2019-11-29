@@ -15,12 +15,21 @@ export class CouponsComponent implements OnInit {
   public price: number;
   public type: CouponType;
   public isCustomer: boolean;
-  constructor(private service: CouponService, private activatedRoute: ActivatedRoute) { }
+  public purchased: boolean;
+  constructor(private service: CouponService, private activatedRoute: ActivatedRoute) {
+   }
 
   ngOnInit() {
-    this.service.getCoupons().subscribe(list => {this.coupons = list; });
-    // For now only - Change later
-    this.isCustomer = (this.activatedRoute.snapshot.params.isCustomer === 'customer');
+    this.isCustomer = (this.activatedRoute.snapshot.params.isCustomer === 'isCustomer'
+    || this.activatedRoute.snapshot.params.myCoupons === 'myCoupons');
+    if (this.activatedRoute.snapshot.params.myCoupons === 'myCoupons') {
+      this.purchased = true;
+      this.isCustomer = true;
+      this.service.getCoupons(true).subscribe(purchasedCoupons => {this.coupons = purchasedCoupons; });
+    } else {
+      this.purchased =  false;
+      this.service.getCoupons(false).subscribe(list => {this.coupons = list; });
+    }
   }
   public searchByType() {
     // tslint:disable-next-line: prefer-const

@@ -12,19 +12,21 @@ import { PromptService } from 'src/app/services/prompt.service';
 })
 export class CompanyComponent implements OnInit {
 
-  constructor(private companyService: CompanyService,
-              private adminService: AdminService,
+  constructor(private adminService: AdminService,
               private promptService: PromptService,
               private router: Router) { }
   @Input() public company: Company;
   public url: string;
   ngOnInit() {
-    this.url = '../companyAddOrUpdate/' + this.company.id;
+    this.url = '/companyAddOrUpdate/' + this.company.id;
   }
   public promptMessage() {
     this.promptService.promptBeforeDelete('Delete Company ' + this.company.name, () => {this.deleteCompany(); } );
   }
   public deleteCompany() {
-    this.adminService.deleteCompany(this.company).subscribe(() => {location.reload(true); });
-  }
+    this.adminService.deleteCompany(this.company).
+    subscribe(() => { this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/companies']); } );
+  });
+}
 }

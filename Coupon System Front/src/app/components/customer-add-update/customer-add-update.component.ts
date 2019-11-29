@@ -21,7 +21,7 @@ export class CustomerAddUpdateComponent implements OnInit {
     private id: number;
     private url: string;
   ngOnInit() {
-    this.url = '../customers';
+    this.url = '/customers';
     const str: string = this.activatedRoute.snapshot.params.id.toString();
     this.id = +str;
     // tslint:disable-next-line: triple-equals

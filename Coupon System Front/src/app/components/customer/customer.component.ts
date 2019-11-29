@@ -5,6 +5,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 import { PromptService } from 'src/app/services/prompt.service';
+import { ResourceLoader } from '@angular/compiler';
 
 @Component({
   selector: 'app-customer',
@@ -21,12 +22,15 @@ export class CustomerComponent implements OnInit {
   public url: string;
 
   ngOnInit() {
-    this.url = '../customerAddOrUpdate/' + this.customer.id;
+    this.url = '/customerAddOrUpdate/' + this.customer.id;
   }
   public promptMessage() {
     this.promptService.promptBeforeDelete('Delete Customer ' + this.customer.name , () => {this.deleteCustomer(); } );
   }
   public deleteCustomer() {
-    this.adminService.deleteCustomer(this.customer).subscribe( () => {location.reload(true); });
+    this.adminService.deleteCustomer(this.customer)
+    .subscribe(() => { this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/customers']); });
+    });
   }
 }

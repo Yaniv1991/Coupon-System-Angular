@@ -33,9 +33,7 @@ public isInvalid(): boolean {
   public onSubmit() {
     this.authenticationService.login(this.email, this.password, this.clientType , () => {
       console.log('Success is working'); this.menuComponent.refresh(); } )
-    .subscribe(clientType => { this.clientType = clientType;
-                              //  this.menuComponent.refresh() ; // this should refresh the menu
-    });
+    .subscribe(clientType => { this.clientType = clientType; });
   }
   public logout() {
     this.authenticationService.logout();

@@ -16,6 +16,7 @@ import { CustomerAddUpdateComponent } from './components/customer-add-update/cus
 const routes: Routes = [
   {path: 'home', component: LoginComponent},
   {path: 'coupons/:isCustomer', component: CouponsComponent},
+  {path: 'customer/:myCoupons', component: CouponsComponent},
   {path: 'coupons/coupon/:id', component: CouponComponent},
   {path: 'customers', component: CustomersComponent},
   {path: 'companies', component: CompaniesComponent},
@@ -27,7 +28,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes , {onSameUrlNavigation: 'reload'} )],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
