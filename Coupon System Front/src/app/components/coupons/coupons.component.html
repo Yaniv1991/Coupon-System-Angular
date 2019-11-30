@@ -10,7 +10,7 @@
       <td>
         <form>
           <label for="couponType" class="formLabel">Category</label>
-          <select [(ngModel)]="couponType" class="forminput" name="couponType">
+          <select [(ngModel)]="type" class="forminput" name="couponType">
             <option value="All">All</option>
             <option value="AUTOMOBILE">Automobile</option>
             <option value="CAMPING">Camping</option>
@@ -38,7 +38,7 @@
       <tr>
         <td>
           <form>
-            <label for="couponType" class="formLabel">Category</label>
+            <label for="couponType" class="formLabel">Category</label><br>
             <select [(ngModel)]="couponType" class="forminput" id="coupon_type" name="couponType">
                 <option value="All">All</option>
               <option value="AUTOMOBILE">Automobile</option>
@@ -57,20 +57,30 @@
           </form>
         </td>
         <td>
-          <button class="searchbutton" (click)="searchByType()">Search</button>
-        </td>
-        <td>
           <form>
-            <label for="price" class="formLabel">Price</label><input type="number" class="forminput" [(ngModel)]="price" name="price">
+            <label for="price" class="formLabel">Max Price</label><br><input type="number" class="forminput" [(ngModel)]="price" name="price">
           </form>
         </td>
         <td>
+          <form>
+            <label for="date" class="formLabel">End Date</label><br><input type="date" class="forminput" [(ngModel)]="endDate" name="endDate">
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button class="searchbutton" (click)="searchByType()">Search</button>
+        </td>
+        <td>
           <button class="searchbutton" (click)="searchByPrice()">Search</button>
+        </td>
+        <td>
+          <button class="searchbutton" (click)="searchByEndDate()">Search</button>
         </td>
       </tr>
     </table>
   </div>
   <div class="coupon" *ngFor="let coupon of coupons">
-    <app-coupon [coupon]="coupon" [isCustomer]="isCustomer" [purchased]="purchased"></app-coupon>
+    <app-coupon [coupon]="coupon" [isCustomer]="isCustomer" [purchased] = "purchased"></app-coupon>
   </div>
 </div>

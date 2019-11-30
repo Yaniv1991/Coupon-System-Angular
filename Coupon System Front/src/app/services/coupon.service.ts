@@ -39,4 +39,13 @@ private companyRootUrl = `http://localhost:8080/Rest/Company`;
       }
       return this.httpClient.get<Coupon[]>(this.visitorRootUrl + priceContextPath + price, {withCredentials: true} );
     }
+
+    public getByEndDate(purchasedCoupons: boolean, endDate: Date): Observable<Coupon[]> {
+      if (purchasedCoupons) {
+        return this.httpClient.get<Coupon[]>(this.customerRootUrl +
+           '/getAllPurchasedCouponsByEndDate?date=' + endDate, {withCredentials: true} );
+      }
+      return this.httpClient.get<Coupon[]>(this.visitorRootUrl +
+        '/GetAllCouponsByEndDate?date=' + endDate, {withCredentials: true} );
+    }
 }

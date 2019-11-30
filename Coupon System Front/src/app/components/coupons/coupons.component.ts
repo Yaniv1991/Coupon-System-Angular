@@ -16,6 +16,7 @@ export class CouponsComponent implements OnInit {
   public couponType: CouponType;
   public isCustomer: boolean;
   public purchased: boolean;
+  public endDate: Date;
   constructor(private service: CouponService,
               private activatedRoute: ActivatedRoute,
               private router: Router
@@ -42,6 +43,10 @@ export class CouponsComponent implements OnInit {
   }
   public searchByPrice() {
     this.service.getByPrice(this.price, this.isCustomer).subscribe((coupons) => {this.coupons = coupons; } );
+  }
+
+  public searchByEndDate() {
+    this.service.getByEndDate(this.purchased, this.endDate).subscribe((coupons) => {this.coupons = coupons; } );
   }
 
 }
