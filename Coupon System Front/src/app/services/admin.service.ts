@@ -14,8 +14,6 @@ export class AdminService {
   constructor(private httpClient: HttpClient) { }
 
   public addCompany(company: Company): Observable<Company> {
-    console.log(company);
-    console.log(this.adminRootUrl + '/Company/Create');
     return this.httpClient.post<Company>(this.adminRootUrl + '/Company/Create', company, {withCredentials: true});
   }
 

@@ -1,11 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-
 import { Customer } from 'src/app/models/customer';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 import { PromptService } from 'src/app/services/prompt.service';
-import { ResourceLoader } from '@angular/compiler';
 
 @Component({
   selector: 'app-customer',
@@ -31,6 +29,6 @@ export class CustomerComponent implements OnInit {
     this.adminService.deleteCustomer(this.customer)
     .subscribe(() => { this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/customers']); });
-    });
+    } , (error: Error) => {alert(error.message); });
   }
 }

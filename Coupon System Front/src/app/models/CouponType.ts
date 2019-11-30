@@ -1,6 +1,5 @@
 
 export enum CouponType {
-
   AUTOMOBILE,
   CAMPING,
   COMPUTER,

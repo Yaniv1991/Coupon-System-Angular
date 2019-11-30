@@ -1,5 +1,5 @@
 [
-  {"description":"Home", "routePath":""},
+  {"description":"Login", "routePath":""},
   {"description": "Companies", "routePath": "companies"},
   { "description": "Customers", "routePath": "customers" }
 ]

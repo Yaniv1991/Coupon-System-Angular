@@ -35,7 +35,7 @@ export class CustomerAddUpdateComponent implements OnInit {
   }
   public submitChanges() {
     if (this.add) {
-      this.adminService.addCustomer(this.customer).subscribe(() => {this.router.navigateByUrl(this.url); } );
+      this.adminService.addCustomer(this.customer).subscribe(() => {this.router.navigateByUrl(this.url); } , );
     } else {
       this.adminService.updateCustomer(this.customer).subscribe(() => {this.router.navigateByUrl(this.url); } );
     }

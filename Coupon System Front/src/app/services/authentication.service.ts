@@ -27,28 +27,31 @@ export class AuthenticationService {
         return ClientType.CUSTOMER;
     }
 
-    login(email: string, password: string, clientType: ClientType, success): Observable<ClientType>   {
-        console.log('logging in');
+    login(email: string, password: string, clientType: ClientType, success, failure): Observable<ClientType>   {
         this.user = {email, password, clientType};
         this.httpClient.post<User>(this.loginUrl, this.user, {withCredentials: true}).subscribe(userFromDB => {
             if (userFromDB) {
                 this.user = userFromDB;
-                console.log('user is found');
                 this.cookieService.set('clientType', clientType.toString());
                 success();
                 // tslint:disable-next-line:no-shadowed-variable
                 return new Observable<ClientType>(clientType => clientType);
             } else {
-                        console.log('No user is found');
                         this.cookieService.delete('clientType');
+                        failure();
                     }
                 } );
         // tslint:disable-next-line:no-shadowed-variable
         return new Observable<ClientType>( clientType => clientType) ;
     }
 
-    logout() {
-        this.httpClient.get(`/Logout`).subscribe();
-        this.cookieService.delete('clientType');
+    logout(success?) {
+        this.httpClient.get(`http://localhost:8080/Rest/Logout`).subscribe(() => {
+            this.user = null;
+            this.cookieService.delete('clientType');
+            if (success) {
+                success();
+            }
+        });
     }
 }

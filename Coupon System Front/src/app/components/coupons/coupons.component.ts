@@ -32,21 +32,25 @@ export class CouponsComponent implements OnInit {
     } else {
       this.purchased =  false;
     }
-    this.service.getCoupons(this.purchased).subscribe(list => {this.coupons = list; });
+    // this.couponType = CouponType.ALL;
+    this.service.getCoupons(this.purchased).subscribe(list => {this.coupons = list; } , (error: Error) => {alert(error.message); });
   }
   public searchByType() {
-    if (this.couponType.toString() === 'All') {
+    if (this.couponType.toString() === 'ALL') {
       this.service.getCoupons(this.purchased).subscribe(list => {this.coupons = list; });
     } else {
-      this.service.getByType(this.couponType, this.isCustomer).subscribe((coupons) => {this.coupons = coupons; } );
+      this.service.getByType(this.couponType, this.isCustomer).subscribe((coupons) => {this.coupons = coupons; }
+      , (error: Error) => {alert(error.message); });
     }
   }
   public searchByPrice() {
-    this.service.getByPrice(this.price, this.isCustomer).subscribe((coupons) => {this.coupons = coupons; } );
+    this.service.getByPrice(this.price, this.isCustomer).subscribe((coupons) => {this.coupons = coupons; }
+   , (error: Error) => {alert(error.message); } );
   }
 
   public searchByEndDate() {
-    this.service.getByEndDate(this.purchased, this.endDate).subscribe((coupons) => {this.coupons = coupons; } );
+    this.service.getByEndDate(this.purchased, this.endDate).subscribe((coupons) => {this.coupons = coupons; }
+    , (error: Error) => {alert(error.message); } );
   }
 
 }

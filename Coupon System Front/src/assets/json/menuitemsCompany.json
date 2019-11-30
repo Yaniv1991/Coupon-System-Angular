@@ -1,4 +1,4 @@
 [
-  {"description":"Home", "routePath":""},
+  {"description":"Login", "routePath":""},
   {"description": "My Coupons", "routePath": "coupons/company"}
 ]

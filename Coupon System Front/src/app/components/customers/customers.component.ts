@@ -17,6 +17,6 @@ export class CustomersComponent implements OnInit {
   public customers: Customer[];
 
   ngOnInit() {
-    this.adminService.getAllCustomers().subscribe((customers) => this.customers = customers) ;
+    this.adminService.getAllCustomers().subscribe((customers) => this.customers = customers, (error: Error) => {alert(error.message); }) ;
   }
 }

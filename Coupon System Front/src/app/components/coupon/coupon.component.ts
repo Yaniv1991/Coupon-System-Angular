@@ -30,7 +30,7 @@ export class CouponComponent implements OnInit {
       this.coupon = coupon;
   // tslint:disable-next-line: triple-equals
       this.url = '/couponAddOrUpdate/' + this.coupon.id;
-});
+}, (error: Error) => {alert(error.message); } );
   }
   public promptMessage() {
    this.promptService.promptBeforeDelete('Delete Coupon ' + this.coupon.title , () => {this.deleteCoupon(); } );
@@ -39,12 +39,12 @@ export class CouponComponent implements OnInit {
     this.companyService.removeCoupon(this.coupon)
     .subscribe(() => { this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
       this.router.navigateByUrl('/coupons/company'); });
-  });
+  } , (error: Error) => {alert(error.message); } );
 }
   public purchaseCoupon() {
     this.customerService.purchase(this.coupon)
     .subscribe(() => { this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
       this.router.navigateByUrl('/coupons/isCustomer'); });
-  });
+  } , (error: Error) => {alert(error.message); });
   }
 }

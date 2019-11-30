@@ -29,16 +29,19 @@ export class CompanyAddUpdateComponent implements OnInit {
     this.add = (this.id == 0);
 
     if (!this.add) {
-      this.adminService.getCompanyById(this.id).subscribe((company) => this.company = company);
+      this.adminService.getCompanyById(this.id).subscribe((company) => this.company = company
+      , (error: Error) => {alert(error.message); });
     } else {
       this.company = new Company(this.id , '' , '', '');
     }
   }
   public submitChanges() {
     if (this.add) {
-      this.adminService.addCompany(this.company).subscribe(() => {this.router.navigateByUrl(this.url); } );
+      this.adminService.addCompany(this.company).subscribe(() => {this.router.navigateByUrl(this.url); }
+       , (error: Error) => {alert(error.message); } );
     } else {
-      this.adminService.updateCompany(this.company).subscribe(() => {this.router.navigateByUrl(this.url); } );
+      this.adminService.updateCompany(this.company).subscribe(() => {this.router.navigateByUrl(this.url); }
+      , (error: Error) => {alert(error.message); } );
     }
   }
 

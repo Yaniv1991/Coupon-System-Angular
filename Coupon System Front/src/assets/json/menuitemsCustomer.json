@@ -1,5 +1,5 @@
 [
-  {"description":"Home", "routePath":""},
+  {"description":"Login", "routePath":""},
   {"description": "Coupons", "routePath": "coupons/isCustomer"},
   {"description": "My Purchased Coupons" , "routePath": "customer/myCoupons"}
 ]

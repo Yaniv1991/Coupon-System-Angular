@@ -32,7 +32,8 @@ public isInvalid(): boolean {
 
   public onSubmit() {
     this.authenticationService.login(this.email, this.password, this.clientType , () => {
-      console.log('Success is working'); this.menuComponent.refresh(); } )
+     this.menuComponent.refresh(); } ,
+       () => {alert('No user matching the credentials was found'); } )
     .subscribe(clientType => { this.clientType = clientType; });
   }
   public logout() {

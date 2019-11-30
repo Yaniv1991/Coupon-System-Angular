@@ -30,16 +30,18 @@ export class CouponAddUpdateComponent implements OnInit {
     // tslint:disable-next-line:triple-equals
     this.add = this.id == 0;
     if (!this.add) {
-      this.couponService.getSingleCoupon(this.id).subscribe((coupon) => this.coupon = coupon);
+      this.couponService.getSingleCoupon(this.id).subscribe((coupon) => this.coupon = coupon , (error: Error) => {alert(error.message); });
     } else {
       this.coupon = new Coupon(this.id , 0 , '' , '' , CouponType.FOOD , 0 , null , null , '' ) ;
     }
   }
   public submitChanges() {
     if (this.add) {
-      this.companyService.addCoupon(this.coupon).subscribe( () => {this.router.navigateByUrl(this.url); } );
+      this.companyService.addCoupon(this.coupon).subscribe( () => {this.router.navigateByUrl(this.url); }
+      , (error: Error) => {alert(error.message); });
     } else {
-      this.companyService.updateCoupon(this.coupon).subscribe(() => {this.router.navigateByUrl(this.url); } );
+      this.companyService.updateCoupon(this.coupon).subscribe(() => {this.router.navigateByUrl(this.url); }
+      , (error: Error) => {alert(error.message); } );
     }
   }
 

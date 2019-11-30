@@ -17,7 +17,8 @@ export class CompaniesComponent implements OnInit {
   private router: Router;
 
   ngOnInit() {
-    this.adminService.getAllCompanies().subscribe((companies) => this.companies = companies);
+    this.adminService.getAllCompanies().subscribe((companies) => this.companies = companies
+   , (error: Error) => {alert(error.message); });
   }
   public goToAdd() {
     this.router.navigateByUrl('companyAddOrUpdate/add/0');

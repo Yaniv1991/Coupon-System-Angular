@@ -16,4 +16,5 @@ export class PromptService {
       window.alert('You have canceled the delete action');
     }
   }
+
 }

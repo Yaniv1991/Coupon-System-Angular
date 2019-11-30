@@ -26,7 +26,7 @@ export class CompanyComponent implements OnInit {
   public deleteCompany() {
     this.adminService.deleteCompany(this.company).
     subscribe(() => { this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/companies']); } );
+      this.router.navigate(['/companies']); }  , (error: Error) => {alert(error.message); });
   });
 }
 }
