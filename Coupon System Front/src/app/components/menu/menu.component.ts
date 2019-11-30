@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MenuService } from 'src/app/services/menu.service';
 import { MenuItem } from 'src/app/models/menuitem';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -11,7 +12,10 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class MenuComponent implements OnInit {
 
   public menuItems: MenuItem[];
-  constructor(private menuService: MenuService, private authenticationService: AuthenticationService) {
+  constructor(private menuService: MenuService,
+              private authenticationService: AuthenticationService,
+              private router: Router
+    ) {
     this.menuService.getMenuItems().subscribe(mi => {
       this.menuItems = mi;
    } , (error: Error) => {alert(error.message); });
@@ -26,7 +30,7 @@ export class MenuComponent implements OnInit {
   public logout() {
     this.authenticationService.logout(
       () => {
-        this.refresh();
+        this.router.navigateByUrl('');
       } );
   }
 
