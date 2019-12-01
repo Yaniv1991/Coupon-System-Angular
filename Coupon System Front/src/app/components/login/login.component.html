@@ -8,9 +8,9 @@
         <input [(ngModel)]="password" type="text" class="forminput password" required  name="password" id="password"/>
         <label for="clientType" class="formLabel">Client Type</label>
         <select [(ngModel)]="clientType" name="clientType" id="clientType" class="forminput clientType">
-          <option value="ADMIN">Admin</option>
-          <option value="COMPANY">Company</option>
-          <option value="CUSTOMER">Customer</option>
+          <option value="CUSTOMER" class="forminput" selected>Customer</option>
+          <option value="COMPANY" class="forminput">Company</option>
+          <option value="ADMIN" class="forminput">Admin</option>
         </select>
         <p *ngIf="!formInfo.form.valid" class="warning">Please provide a valid email and password</p>
         <button class="submitbutton" (click)="onSubmit()" [disabled] = "!formInfo.form.valid">Submit</button>
