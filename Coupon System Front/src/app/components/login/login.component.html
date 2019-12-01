@@ -2,7 +2,7 @@
   <form #formInfo="ngForm">
       <div class="header">Log-in</div>
         <label for="email" class="formLabel">Email</label>
-        <input [(ngModel)]="email" type="email" class="forminput email" required name="name" id="email"/>
+        <input [(ngModel)]="email" type="email" class="forminput email" required name="email" id="email" ngModel email="true"/>
         <!-- <td>Email is {{email}}</td> -->
         <label for="password" class="formLabel">Password</label>
         <input [(ngModel)]="password" type="text" class="forminput password" required  name="password" id="password"/>
@@ -12,6 +12,7 @@
           <option value="COMPANY">Company</option>
           <option value="CUSTOMER">Customer</option>
         </select>
+        <p *ngIf="!formInfo.form.valid" class="warning">Please provide a valid email and password</p>
         <button class="submitbutton" (click)="onSubmit()" [disabled] = "!formInfo.form.valid">Submit</button>
   </form>
 </div>
