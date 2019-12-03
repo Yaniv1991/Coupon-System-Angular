@@ -12,7 +12,7 @@
             <option value="COMPANY" class="forminput">Company</option>
             <option value="ADMIN" class="forminput">Admin</option>
           </select>
-          <p *ngIf="!formInfo.form.valid" class="warning">Please provide a valid email and password</p>
+          <p *ngIf="formInfo.form.invalid && formInfo.form.dirty" class="warning">Please provide a valid email and password</p>
           <button class="submitbutton" (click)="onSubmit()" [disabled] = "!formInfo.form.valid">Submit</button>
     </form>
   </div>

@@ -1,13 +1,14 @@
 <div class="wrapper">
-    <div *ngIf="!add" class="wrapper">
-        <img src="assets/images/Loading_Infinity.gif" *ngIf="!company">
-    </div>
+  <div>
+      <img src="assets/images/Loading_Infinity.gif" *ngIf="!company">
+  </div>
     <div [class]="add? 'form' : 'wrapper'">
-      <form>
+      <form #formInfo="ngForm">
         <label class="formlabel" >Company Name</label><input class="forminput" name="name" type="text" [(ngModel)]="company.name">
-        <label class="formlabel" for="email">Email</label><input class="forminput" name = "email" type="email" [(ngModel)]="company.email">
-        <label class="formlabel" for="password">Password</label><input class="forminput" name = "password" type="password" [(ngModel)]="company.password">
-        <button type="submit" class="submitbutton" (click)="submitChanges()">Submit</button>
+        <label class="formlabel" for="email">Email</label><input class="forminput" required name = "email" type="email" [(ngModel)]="company.email" ngModel email="true">
+        <label class="formlabel" for="password">Password</label><input class="forminput" required name = "password" type="password" [(ngModel)]="company.password">
+        <p *ngIf="formInfo.form.invalid && formInfo.form.dirty" class="warning">Please provide a valid email and password</p>
+        <button type="submit" class="submitbutton" (click)="submitChanges()" [disabled] = "formInfo.form.invalid">Submit</button>
       </form>
     </div>
 </div>
