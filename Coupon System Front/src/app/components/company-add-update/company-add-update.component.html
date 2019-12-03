@@ -1,21 +1,13 @@
 <div class="wrapper">
-  <div *ngIf="add" class="form">
-    <form>
-      <label class="formlabel" >Company Name</label><input class="forminput" name="name" type="text" [(ngModel)]="company.name">
-      <label class="formlabel" for="email">Email</label><input class="forminput" name = "email" type="email" [(ngModel)]="company.email">
-      <label class="formlabel" for="password">Password</label><input class="forminput" name = "password" type="password" [(ngModel)]="company.password">
-      <button type="submit" class="submitbutton" (click)="submitChanges()">Submit</button>
-    </form>
-  </div>
-  <div *ngIf="!add" class="wrapper">
-      <img src="assets/images/Loading_Infinity.gif" *ngIf="!company">
-    <div class="form" *ngIf="company">
+    <div *ngIf="!add" class="wrapper">
+        <img src="assets/images/Loading_Infinity.gif" *ngIf="!company">
+    </div>
+    <div [class]="add? 'form' : 'wrapper'">
       <form>
-        <label class="formlabel" for="company_name">Company Name</label><input class="forminput" type="text" [(ngModel)]="company.name" name="name">
-        <label class="formlabel" for="email">Email</label><input class="forminput" type="email" [(ngModel)]="company.email" name="email">
-        <label class="formlabel" for="password">Password</label><input class="forminput" type="password" [(ngModel)]="company.password" name="password">
+        <label class="formlabel" >Company Name</label><input class="forminput" name="name" type="text" [(ngModel)]="company.name">
+        <label class="formlabel" for="email">Email</label><input class="forminput" name = "email" type="email" [(ngModel)]="company.email">
+        <label class="formlabel" for="password">Password</label><input class="forminput" name = "password" type="password" [(ngModel)]="company.password">
         <button type="submit" class="submitbutton" (click)="submitChanges()">Submit</button>
       </form>
     </div>
-  </div>
 </div>

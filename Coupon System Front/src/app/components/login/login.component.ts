@@ -34,10 +34,10 @@ public isInvalid(): boolean {
     this.authenticationService.login(this.email, this.password, this.clientType , () => {
      this.menuComponent.refresh(); } ,
        () => {alert('No user matching the credentials was found'); } )
-    .subscribe(clientType => { this.clientType = clientType; });
+    .subscribe(clientType => { this.clientType = clientType; this.submitted = true; });
   }
   public logout() {
-    this.authenticationService.logout();
+    this.authenticationService.logout(() => this.submitted = false);
   }
 
 

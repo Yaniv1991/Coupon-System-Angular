@@ -1,5 +1,5 @@
-<!-- <p>coupon-add-update works!</p> -->
-<div *ngIf="add" class="wrapper">
+<div [class]="wrapper">
+    <img src="assets/images/Loading_Infinity.gif" *ngIf="!coupon">
     <div class="form">
         <form>
             <label  class="formlabel" for="title">Title</label><input class="forminput" type="text" [(ngModel)]="coupon.title" name="title" >
@@ -28,7 +28,8 @@
         </form>
       </div>
 </div>
-<div *ngIf="!add" class="wrapper">
+
+<!-- <div *ngIf="!add" class="wrapper">
     <img src="assets/images/Loading_Infinity.gif" *ngIf="!coupon">
     <div class="form" *ngIf="coupon">
         <form>
@@ -54,8 +55,7 @@
               <option value="couponType.TRAVELING">Traveling</option>
             </select >
             <label  class="formlabel" for="image">Image URL</label><input class="forminput" type="text" [(ngModel)]="coupon.image" name="image">
-            <!-- TDOD (Yaniv) Add file upload mechnincs-->
             <button type="submit" class="submitbutton" (click)="submitChanges()">Submit</button>
         </form>
-      </div>
-</div>
+      </div> -->
+<!-- </div> -->
