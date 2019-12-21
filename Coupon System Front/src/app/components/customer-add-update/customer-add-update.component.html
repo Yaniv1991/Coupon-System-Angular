@@ -7,7 +7,7 @@
         <label for="email" class="formlabel">Email</label><input class="forminput" type="email" [(ngModel)]="customer.email" required name="email" ngmodel email = "true">
         <label for="password" class="formlabel">Password</label><input class="forminput" type="password" [(ngModel)]="customer.password" required name="password">
         <p *ngIf="formInfo.form.invalid && formInfo.form.dirty" class="warning">Please provide a valid email and password</p>
-        <button type="submit" class="submitbutton" (click)="submitChanges()">Submit</button>
+        <button type="submit" class="submitbutton" (click)="submitChanges()" [disabled]="formInfo.form.invalid">Submit</button>
       </form>
     </div>
   </div>

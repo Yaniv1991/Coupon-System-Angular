@@ -1,7 +1,7 @@
 <div [class]="wrapper">
     <img src="assets/images/Loading_Infinity.gif" *ngIf="!coupon">
     <div class="form">
-        <form>
+        <form #formInfo="ngForm">
             <label  class="formlabel" for="title">Title</label><input class="forminput" type="text" [(ngModel)]="coupon.title" name="title" >
             <label  class="formlabel" for="message">Message</label><input class="forminput" type="text" [(ngModel)]="coupon.message" name="message" >
             <label  class="formlabel" for="amount">Stock</label><input class="forminput" type="number" [(ngModel)]="coupon.amount" name="amount">
@@ -24,7 +24,7 @@
               <option value="couponType.TRAVELING">Traveling</option>
             </select>
             <label  class="formlabel" for="image">Image URL</label><input class="forminput" type="text" [(ngModel)]="coupon.image" name="image">
-            <button type="submit" class="submitbutton" (click)="submitChanges()">Submit</button>
+            <button type="submit" class="submitbutton" (click)="submitChanges()" [disabled] = "formInfo.form.invalid">Submit</button>
         </form>
       </div>
 </div>
